@@ -2,7 +2,9 @@ package muitofacilweb
 
 class CheckoutOrder {
 
-	static hasMany = [products: Product, customers: Customer]
+	Customer customer
+
+	static hasMany = [products: Product, customers: Customer, items: Item]
 
 	String obs
 

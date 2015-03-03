@@ -2,8 +2,8 @@ package muitofacilweb
 
 class Product {
 
-
     String name
+    Long price
 
     static constraints = {}
 

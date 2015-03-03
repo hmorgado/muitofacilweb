@@ -4,7 +4,8 @@ class Customer {
 
 	String name
 	String cnpj
-
+	String razaoSocial
+	
     static constraints = {
     }
 
