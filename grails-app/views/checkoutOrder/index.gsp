@@ -24,6 +24,8 @@
 			<thead>
 					<tr>
 					
+						<th><g:message code="checkoutOrder.customer.label" default="Customer" /></th>
+					
 						<g:sortableColumn property="obs" title="${message(code: 'checkoutOrder.obs.label', default: 'Obs')}" />
 					
 					</tr>
@@ -32,7 +34,9 @@
 				<g:each in="${checkoutOrderInstanceList}" status="i" var="checkoutOrderInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${checkoutOrderInstance.id}">${fieldValue(bean: checkoutOrderInstance, field: "obs")}</g:link></td>
+						<td><g:link action="show" id="${checkoutOrderInstance.id}">${fieldValue(bean: checkoutOrderInstance, field: "customer")}</g:link></td>
+					
+						<td>${fieldValue(bean: checkoutOrderInstance, field: "obs")}</td>
 					
 					</tr>
 				</g:each>

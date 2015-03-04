@@ -4,7 +4,9 @@ class CheckoutOrder {
 
 	Customer customer
 
-	static hasMany = [products: Product, customers: Customer, items: Item]
+	static hasMany = [ 
+		items: Item
+	]
 
 	String obs
 

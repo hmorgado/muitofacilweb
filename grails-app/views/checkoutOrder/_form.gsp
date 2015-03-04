@@ -2,12 +2,21 @@
 
 
 
-<div class="fieldcontain ${hasErrors(bean: checkoutOrderInstance, field: 'customers', 'error')} ">
-	<label for="customers">
-		<g:message code="checkoutOrder.customers.label" default="Customers" />
+<div class="fieldcontain ${hasErrors(bean: checkoutOrderInstance, field: 'customer', 'error')} required">
+	<label for="customer">
+		<g:message code="checkoutOrder.customer.label" default="Customer" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:select id="customer" name="customer.id" from="${muitofacilweb.Customer.list()}" optionKey="id" required="" value="${checkoutOrderInstance?.customer?.id}" class="many-to-one"/>
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: checkoutOrderInstance, field: 'items', 'error')} ">
+	<label for="items">
+		<g:message code="checkoutOrder.items.label" default="Items" />
 		
 	</label>
-	<g:select name="customers" from="${muitofacilweb.Customer.list()}" multiple="multiple" optionKey="id" size="5" value="${checkoutOrderInstance?.customers*.id}" class="many-to-many"/>
+	<g:select name="items" from="${muitofacilweb.Item.list()}" multiple="multiple" optionKey="id" size="5" value="${checkoutOrderInstance?.items*.id}" class="many-to-many"/>
 
 </div>
 

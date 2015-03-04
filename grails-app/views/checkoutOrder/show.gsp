@@ -23,12 +23,21 @@
 			</g:if>
 			<ol class="property-list checkoutOrder">
 			
-				<g:if test="${checkoutOrderInstance?.customers}">
+				<g:if test="${checkoutOrderInstance?.customer}">
 				<li class="fieldcontain">
-					<span id="customers-label" class="property-label"><g:message code="checkoutOrder.customers.label" default="Customers" /></span>
+					<span id="customer-label" class="property-label"><g:message code="checkoutOrder.customer.label" default="Customer" /></span>
 					
-						<g:each in="${checkoutOrderInstance.customers}" var="c">
-						<span class="property-value" aria-labelledby="customers-label"><g:link controller="customer" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="customer-label"><g:link controller="customer" action="show" id="${checkoutOrderInstance?.customer?.id}">${checkoutOrderInstance?.customer?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${checkoutOrderInstance?.items}">
+				<li class="fieldcontain">
+					<span id="items-label" class="property-label"><g:message code="checkoutOrder.items.label" default="Items" /></span>
+					
+						<g:each in="${checkoutOrderInstance.items}" var="i">
+						<span class="property-value" aria-labelledby="items-label"><g:link controller="item" action="show" id="${i.id}">${i?.encodeAsHTML()}</g:link></span>
 						</g:each>
 					
 				</li>

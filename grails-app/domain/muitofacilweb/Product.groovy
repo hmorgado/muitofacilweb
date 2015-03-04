@@ -6,7 +6,6 @@ class Product {
     Long price
 
     static constraints = {}
-
     
     String toString() {
     	"${this.id} - ${this.name}"
