@@ -95,7 +95,20 @@ class CheckoutOrderController {
     }
 
     private fillOutItems(checkoutOrderInstance){
+        def products = params.products
+        
+        products.each { id ->
+            def item = new Item()
+            def product = Product.get(id)
+            item.with{
+                name = product.name
+                //quantity = product.quantity
+                price = product.price
+                //obs = product.obs
+            }
 
+            checkoutOrderInstance.addToItems(item)
+        }
     }
 
     protected void notFound() {
