@@ -7,10 +7,11 @@ class Item {
 	String obs
 
 	static mapping = {
-		table 'item'
+		//table 'item'
 	}
 
     static constraints = {
     	obs nullable: true
+    	price nullable: true
     }
 }

@@ -45,17 +45,8 @@
 				<li class="fieldcontain">
 					<span id="items-label" class="property-label"><g:message code="checkoutOrder.items.label" default="Items" /></span>
 					
-						<span class="property-value" aria-labelledby="items-label"><g:fieldValue bean="${checkoutOrderInstance}" field="items"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${checkoutOrderInstance?.products}">
-				<li class="fieldcontain">
-					<span id="products-label" class="property-label"><g:message code="checkoutOrder.products.label" default="Products" /></span>
-					
-						<g:each in="${checkoutOrderInstance.products}" var="p">
-						<span class="property-value" aria-labelledby="products-label"><g:link controller="product" action="show" id="${p.id}">${p?.encodeAsHTML()}</g:link></span>
+						<g:each in="${checkoutOrderInstance.items}" var="i">
+						<span class="property-value" aria-labelledby="items-label"><g:link controller="item" action="show" id="${i.id}">${i?.encodeAsHTML()}</g:link></span>
 						</g:each>
 					
 				</li>
