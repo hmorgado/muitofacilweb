@@ -23,6 +23,15 @@
 			</g:if>
 			<ol class="property-list checkoutOrder">
 			
+				<g:if test="${checkoutOrderInstance?.obs}">
+				<li class="fieldcontain">
+					<span id="obs-label" class="property-label"><g:message code="checkoutOrder.obs.label" default="Obs" /></span>
+					
+						<span class="property-value" aria-labelledby="obs-label"><g:fieldValue bean="${checkoutOrderInstance}" field="obs"/></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${checkoutOrderInstance?.customer}">
 				<li class="fieldcontain">
 					<span id="customer-label" class="property-label"><g:message code="checkoutOrder.customer.label" default="Customer" /></span>
@@ -36,18 +45,7 @@
 				<li class="fieldcontain">
 					<span id="items-label" class="property-label"><g:message code="checkoutOrder.items.label" default="Items" /></span>
 					
-						<g:each in="${checkoutOrderInstance.items}" var="i">
-						<span class="property-value" aria-labelledby="items-label"><g:link controller="item" action="show" id="${i.id}">${i?.encodeAsHTML()}</g:link></span>
-						</g:each>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${checkoutOrderInstance?.obs}">
-				<li class="fieldcontain">
-					<span id="obs-label" class="property-label"><g:message code="checkoutOrder.obs.label" default="Obs" /></span>
-					
-						<span class="property-value" aria-labelledby="obs-label"><g:fieldValue bean="${checkoutOrderInstance}" field="obs"/></span>
+						<span class="property-value" aria-labelledby="items-label"><g:fieldValue bean="${checkoutOrderInstance}" field="items"/></span>
 					
 				</li>
 				</g:if>

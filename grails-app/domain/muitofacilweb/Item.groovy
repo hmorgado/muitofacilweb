@@ -2,11 +2,15 @@ package muitofacilweb
 
 class Item {
 
-	Long quantity
+	String name
 	Long price
 	String obs
-	Product product
+
+	static mapping = {
+		table 'item'
+	}
 
     static constraints = {
+    	obs nullable: true
     }
 }

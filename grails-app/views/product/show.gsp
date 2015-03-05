@@ -23,11 +23,29 @@
 			</g:if>
 			<ol class="property-list product">
 			
+				<g:if test="${productInstance?.obs}">
+				<li class="fieldcontain">
+					<span id="obs-label" class="property-label"><g:message code="product.obs.label" default="Obs" /></span>
+					
+						<span class="property-value" aria-labelledby="obs-label"><g:fieldValue bean="${productInstance}" field="obs"/></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${productInstance?.name}">
 				<li class="fieldcontain">
 					<span id="name-label" class="property-label"><g:message code="product.name.label" default="Name" /></span>
 					
 						<span class="property-value" aria-labelledby="name-label"><g:fieldValue bean="${productInstance}" field="name"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${productInstance?.price}">
+				<li class="fieldcontain">
+					<span id="price-label" class="property-label"><g:message code="product.price.label" default="Price" /></span>
+					
+						<span class="property-value" aria-labelledby="price-label"><g:fieldValue bean="${productInstance}" field="price"/></span>
 					
 				</li>
 				</g:if>

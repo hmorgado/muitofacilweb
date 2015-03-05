@@ -35,6 +35,21 @@ class CheckoutOrderController {
             return
         }
 
+        checkoutOrderInstance.products.each{ product ->
+
+            println product
+            def item = new Item()
+            item.with{
+                name = product.name
+                //quantity = product.quantity
+                price = product.price
+                //obs = product.obs
+            }
+            println "#####" + item
+            item.save(flush: true)
+            checkoutOrderInstance.items << item
+        }
+
         checkoutOrderInstance.save flush:true
 
         request.withFormat {

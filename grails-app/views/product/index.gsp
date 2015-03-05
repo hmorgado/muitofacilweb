@@ -24,7 +24,11 @@
 			<thead>
 					<tr>
 					
+						<g:sortableColumn property="obs" title="${message(code: 'product.obs.label', default: 'Obs')}" />
+					
 						<g:sortableColumn property="name" title="${message(code: 'product.name.label', default: 'Name')}" />
+					
+						<g:sortableColumn property="price" title="${message(code: 'product.price.label', default: 'Price')}" />
 					
 					</tr>
 				</thead>
@@ -32,7 +36,11 @@
 				<g:each in="${productInstanceList}" status="i" var="productInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${productInstance.id}">${fieldValue(bean: productInstance, field: "name")}</g:link></td>
+						<td><g:link action="show" id="${productInstance.id}">${fieldValue(bean: productInstance, field: "obs")}</g:link></td>
+					
+						<td>${fieldValue(bean: productInstance, field: "name")}</td>
+					
+						<td>${fieldValue(bean: productInstance, field: "price")}</td>
 					
 					</tr>
 				</g:each>
