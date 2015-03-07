@@ -1,3 +1,5 @@
+import muitofacilweb.CheckoutOrder
+
 class UrlMappings {
 
 	static mappings = {
@@ -5,6 +7,11 @@ class UrlMappings {
             constraints {
                 // apply constraints here
             }
+        }
+
+        "/checkoutOrder/vendas"(resource: CheckoutOrder){
+            controller: "checkoutOrder"
+            action: "vendas"
         }
 
         "/"(view:"/index")

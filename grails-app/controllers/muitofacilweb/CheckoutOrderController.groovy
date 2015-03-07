@@ -1,6 +1,8 @@
 package muitofacilweb
 
-
+import grails.converters.JSON
+import grails.converters.XML
+import groovy.xml.MarkupBuilder
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
@@ -35,7 +37,7 @@ class CheckoutOrderController {
             return
         }
 
-        fillOutItems(checkoutOrderInstance)
+        fillInItems(checkoutOrderInstance)
 
         println "####" + checkoutOrderInstance.properties
 
@@ -96,24 +98,54 @@ class CheckoutOrderController {
         }
     }
 
-    private fillOutItems(checkoutOrderInstance){
+    def vendas = {
+        def orders = CheckoutOrder.list()
+
+        def writer = new StringWriter()
+        def xml = new MarkupBuilder(writer)
+
+        xml.vendas(){
+            orders.each{ order ->
+                venda(){
+                    id(order.id)
+                    cliente(order.customer?.id)
+                    itens(){
+                        order.items.each { orderItem ->
+                            item(){
+                                id(orderItem.id)
+                                quantidade(orderItem.quantity)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        render writer.toString()
+    }
+
+    private fillInItems(checkoutOrderInstance){
 
         def products = params.products
         
         products.each { id ->
             
-            //def quantity = params."quantity${id}"
+            def itemQuantity = params."quantity${id}" as Long
             
             def item = new Item()
             def product = Product.get(id)
             
-            //println "###### " + quantity
-            item.with{
-                name = product.name
-                
-                price = product.price
-                //obs = product.obs
-            }    
+            println "###### " + itemQuantity
+            if(product){
+                item.with{
+                    name = product.name
+                    quantity = itemQuantity
+                    price = product.price
+                    //obs = product.obs
+                }    
+            }
+
+            println "***********" + item.properties
             
             checkoutOrderInstance.addToItems(item)
         }

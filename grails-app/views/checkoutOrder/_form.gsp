@@ -23,9 +23,22 @@
 <div class="fieldcontain ${hasErrors(bean: checkoutOrderInstance, field: 'items', 'error')} ">
 	<label for="items">
 		<g:message code="checkoutOrder.items.label" default="Items" />
-		
 	</label>
-	<g:select name="products" from="${muitofacilweb.Product.list()}" multiple="multiple" optionKey="id" size="5" class="many-to-many"/>
 
+	
+	<table border="1">
+		<tr>
+			<td>
+				<g:select name="products" from="${muitofacilweb.Product.list()}" multiple="multiple" optionKey="id" size="5" class="many-to-many"/>
+			</td>
+			<td>
+				<fieldset>
+					<g:each name="products" in="${muitofacilweb.Product.list()}" var="p">
+						<input type="text" name="quantity${p.id}" size="1"/><br>
+					</g:each>
+				</fieldset>	
+			</td>
+						
+		</tr>		
+	</table>
 </div>
-
