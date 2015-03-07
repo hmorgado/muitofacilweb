@@ -11,6 +11,10 @@ class Customer {
 		razaoSocial(nullable: true)
     }
 
+    static mapping = {
+    	name defaultValue: "'Heitor'"
+    }
+
     String toString() {
     	"${this.id} - ${this.name}"
     }

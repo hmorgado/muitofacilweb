@@ -37,6 +37,8 @@ class CheckoutOrderController {
 
         fillOutItems(checkoutOrderInstance)
 
+        println "####" + checkoutOrderInstance.properties
+
         checkoutOrderInstance.save flush:true
 
         request.withFormat {
@@ -95,18 +97,24 @@ class CheckoutOrderController {
     }
 
     private fillOutItems(checkoutOrderInstance){
+
         def products = params.products
         
         products.each { id ->
+            
+            //def quantity = params."quantity${id}"
+            
             def item = new Item()
             def product = Product.get(id)
+            
+            //println "###### " + quantity
             item.with{
                 name = product.name
-                //quantity = product.quantity
+                
                 price = product.price
                 //obs = product.obs
-            }
-
+            }    
+            
             checkoutOrderInstance.addToItems(item)
         }
     }

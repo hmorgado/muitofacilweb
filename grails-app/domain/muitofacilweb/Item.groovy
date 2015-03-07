@@ -5,10 +5,7 @@ class Item {
 	String name
 	Long price
 	String obs
-
-	static mapping = {
-		//table 'item'
-	}
+	Long quantity
 
     static constraints = {
     	obs nullable: true

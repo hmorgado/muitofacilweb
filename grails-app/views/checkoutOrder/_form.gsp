@@ -25,7 +25,7 @@
 		<g:message code="checkoutOrder.items.label" default="Items" />
 		
 	</label>
-	<g:select name="items" from="${muitofacilweb.Item.list()}" multiple="multiple" optionKey="id" size="5" value="${checkoutOrderInstance?.items*.id}" class="many-to-many"/>
+	<g:select name="products" from="${muitofacilweb.Product.list()}" multiple="multiple" optionKey="id" size="5" class="many-to-many"/>
 
 </div>
 
