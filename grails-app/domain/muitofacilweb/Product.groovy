@@ -3,6 +3,7 @@ package muitofacilweb
 class Product {
 
     String name
+    String externalId
     Long price
     String obs
 

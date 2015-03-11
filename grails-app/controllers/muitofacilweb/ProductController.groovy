@@ -1,6 +1,6 @@
 package muitofacilweb
 
-
+import groovy.json.JsonSlurper
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
@@ -21,6 +21,25 @@ class ProductController {
 
     def create() {
         respond new Product(params)
+    }
+
+    def test = {
+        def json = request.getJSON()
+
+        Product product = new Product()
+
+        product.with {
+            name = json.product.name
+            price = json.product.price as Long
+        }
+
+        if (product.validate()){
+            product.save(flush: true)
+            render "product salvo"
+            return
+        }
+
+        render "oops something went wrong sir"
     }
 
     @Transactional
