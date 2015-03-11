@@ -24,19 +24,22 @@ class ProductController {
     }
 
     def test = {
+
         def json = request.getJSON()
 
-        Product product = new Product()
+        json.products.each{ jsonProduct ->
+            Product product = new Product()
 
-        product.with {
-            name = json.product.name
-            price = json.product.price as Long
-        }
+            product.with {
+                externalId = jsonProduct.externalId
+                name = jsonProduct.name
+                price = jsonProduct.price as BigDecimal
+            }
 
-        if (product.validate()){
-            product.save(flush: true)
-            render "product salvo"
-            return
+            if (product.validate()){
+                product.save(flush: true)
+                println "product valido"
+            }
         }
 
         render "oops something went wrong sir"

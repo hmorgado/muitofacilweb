@@ -4,7 +4,7 @@ class Product {
 
     String name
     String externalId
-    Long price
+    BigDecimal price
     String obs
 
     static constraints = {

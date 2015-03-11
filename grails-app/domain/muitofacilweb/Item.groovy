@@ -3,7 +3,7 @@ package muitofacilweb
 class Item {
 
 	String name
-	Long price
+	BigDecimal price
 	String obs
 	Long quantity
 
