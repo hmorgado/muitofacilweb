@@ -2,6 +2,7 @@ package muitofacilweb
 
 class Customer {
 
+    String externalId
 	String name
 	String cnpj
 	String razaoSocial

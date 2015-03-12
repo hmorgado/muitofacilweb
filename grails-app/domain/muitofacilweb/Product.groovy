@@ -10,6 +10,10 @@ class Product {
     static constraints = {
     	obs nullable: true
     }
+
+    static mapping = {
+        price sqlType: 'decimal(19,4)'
+    }
     
     String toString() {
     	"${this.id} - ${this.name}"

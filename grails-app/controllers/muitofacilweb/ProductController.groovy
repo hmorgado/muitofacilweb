@@ -24,25 +24,34 @@ class ProductController {
     }
 
     def test = {
-
         def json = request.getJSON()
 
-        json.products.each{ jsonProduct ->
-            Product product = new Product()
+        def validProducts = []
+        def invalidProducts = []
 
-            product.with {
-                externalId = jsonProduct.externalId
-                name = jsonProduct.name
-                price = jsonProduct.price as BigDecimal
+        json.products.each{ jsonProduct ->
+
+            def product
+            product = Product.findByExternalId(jsonProduct.externalId)
+
+            if (!product) {
+                product = new Product()
             }
 
-            if (product.validate()){
+            try {
+                product.with {
+                    externalId = jsonProduct.externalId
+                    name = jsonProduct.name
+                    price = jsonProduct.price as BigDecimal
+                }
                 product.save(flush: true)
-                println "product valido"
+                validProducts << product
+            } catch (e){
+                invalidProducts << product
             }
         }
 
-        render "oops something went wrong sir"
+        render "Produtos salvos: ${validProducts*.externalId} \nProdutos invalidos: ${invalidProducts*.externalId}"
     }
 
     @Transactional

@@ -11,4 +11,8 @@ class Item {
     	obs nullable: true
     	price nullable: true
     }
+
+    static mapping = {
+        price sqlType: 'decimal(19,4)'
+    }
 }
