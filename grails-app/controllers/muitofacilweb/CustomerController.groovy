@@ -44,8 +44,11 @@ class CustomerController {
                     razaoSocial = jsonCustomer.razaoSocial
                     cnpj = jsonCustomer.cnpj
                 }
-                customer.save(flush: true)
-                validCustomers << customer
+                if (customer.save(flush: true)) {
+                    validCustomers << customer
+                } else {
+                    invalidCustomers << customer
+                }
             } catch (e){
                 invalidCustomers << customer
             }

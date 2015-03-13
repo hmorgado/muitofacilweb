@@ -1,4 +1,5 @@
 import muitofacilweb.CheckoutOrder
+import muitofacilweb.Customer
 import muitofacilweb.Product
 
 class UrlMappings {
@@ -17,6 +18,16 @@ class UrlMappings {
 
         "/product/test"(resource: Product){
             controller: 'product'
+            action: 'test'
+        }
+
+        "/customer/test"(resource: Customer){
+            controller: 'customer'
+            action: 'test'
+        }
+
+        "/api/customer/test"(resource: Customer){
+            controller: 'customer'
             action: 'test'
         }
 

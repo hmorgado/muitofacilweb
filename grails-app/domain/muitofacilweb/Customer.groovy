@@ -8,12 +8,6 @@ class Customer {
 	String razaoSocial
 	
     static constraints = {
-		cnpj(nullable: true)
-		razaoSocial(nullable: true)
-    }
-
-    static mapping = {
-    	name defaultValue: "'Heitor'"
     }
 
     String toString() {

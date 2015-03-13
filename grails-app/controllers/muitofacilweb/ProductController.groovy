@@ -44,8 +44,13 @@ class ProductController {
                     name = jsonProduct.name
                     price = jsonProduct.price as BigDecimal
                 }
-                product.save(flush: true)
-                validProducts << product
+
+                if (product.save(flush: true)){
+                    validProducts << product
+                } else {
+                    invalidProducts << product
+                }
+
             } catch (e){
                 invalidProducts << product
             }

@@ -90,6 +90,7 @@ environments {
         grails.logging.jul.usebridge = true
         com.grailsrocks.authentication.SignupForm
     }
+
     production {
         grails.logging.jul.usebridge = false
         // TODO: grails.serverURL = "http://www.changeme.com"
@@ -99,6 +100,8 @@ environments {
 
 // log4j configuration
 log4j.main = {
+
+    all 'org.codehaus.groovy.grails.web.mapping'
     // Example of changing the log pattern for the default console appender:
     //
     //appenders {
@@ -109,7 +112,7 @@ log4j.main = {
            'org.codehaus.groovy.grails.web.pages',          // GSP
            'org.codehaus.groovy.grails.web.sitemesh',       // layouts
            'org.codehaus.groovy.grails.web.mapping.filter', // URL mapping
-           'org.codehaus.groovy.grails.web.mapping',        // URL mapping
+           //'org.codehaus.groovy.grails.web.mapping',        // URL mapping
            'org.codehaus.groovy.grails.commons',            // core / classloading
            'org.codehaus.groovy.grails.plugins',            // plugins
            'org.codehaus.groovy.grails.orm.hibernate',      // hibernate integration
