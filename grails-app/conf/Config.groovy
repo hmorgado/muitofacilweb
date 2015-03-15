@@ -101,7 +101,7 @@ environments {
 // log4j configuration
 log4j.main = {
 
-    all 'org.codehaus.groovy.grails.web.mapping'
+    //all 'org.codehaus.groovy.grails.web.mapping'
     // Example of changing the log pattern for the default console appender:
     //
     //appenders {
