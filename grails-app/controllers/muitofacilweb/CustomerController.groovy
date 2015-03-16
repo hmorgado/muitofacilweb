@@ -7,11 +7,13 @@ import grails.transaction.Transactional
 @Transactional(readOnly = true)
 class CustomerController {
 
+    def globalStore
+
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond Customer.list(params), model:[customerInstanceCount: Customer.count()]
+        respond Customer.findAllWhere(store: Store.get(globalStore.id)) , model:[customerInstanceCount: Customer.count()]
     }
 
     def show(Customer customerInstance) {
@@ -68,6 +70,8 @@ class CustomerController {
             return
         }
 
+        //i know., i know...
+        customerInstance.store = Store.get(globalStore.id)
         customerInstance.save flush:true
 
         request.withFormat {

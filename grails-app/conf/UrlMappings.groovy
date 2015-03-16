@@ -31,7 +31,7 @@ class UrlMappings {
             action: 'test'
         }
 
-        "/"(view:"/index")
+        "/"(view:"/login")
         "500"(view:'/error')
 	}
 }

@@ -6,9 +6,9 @@ class Customer {
 	String name
 	String cnpj
 	String razaoSocial
-	
-    static constraints = {
-    }
+    Store store
+
+    static constraints = {}
 
     String toString() {
     	"${this.id} - ${this.name}"

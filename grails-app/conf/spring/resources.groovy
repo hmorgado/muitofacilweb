@@ -4,6 +4,6 @@ import muitofacilweb.Store
 beans = {
 
     globalStore(Store){
-        cnpj = "se isso funcionar vai ser foda"
+        id = null
     }
 }
