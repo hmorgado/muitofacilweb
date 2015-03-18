@@ -17,6 +17,7 @@ class LoginController {
             println "seller and token: " + sellerAndToken
             Cookie cookie = new Cookie('seller', sellerAndToken)
             cookie.path = '/'
+            cookie.maxAge = 60 * 60 * 24 * 3
             response.addCookie(cookie)
             redirect(controller: 'customer', action: 'create')
         }
