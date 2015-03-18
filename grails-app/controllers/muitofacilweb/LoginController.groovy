@@ -1,16 +1,23 @@
 package muitofacilweb
 
-
-import static org.springframework.http.HttpStatus.*
-import grails.transaction.Transactional
+import javax.servlet.http.Cookie
 
 //@Transactional(readOnly = true)
 class LoginController {
 
     def loginService
+    def cookieService
 
     def login = {
-        if (loginService.filterRequest(params)) {
+
+        def map = loginService.filterRequest(params, request)
+
+        if (map.isOkToProceed) {
+            def sellerAndToken = "${map.loggedSeller.sellerName}#${map.loggedSeller.token}"
+            println "seller and token: " + sellerAndToken
+            Cookie cookie = new Cookie('seller', sellerAndToken)
+            cookie.path = '/'
+            response.addCookie(cookie)
             redirect(controller: 'customer', action: 'create')
         }
     }

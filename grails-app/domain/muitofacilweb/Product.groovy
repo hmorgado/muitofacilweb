@@ -6,6 +6,7 @@ class Product {
     String externalId
     BigDecimal price
     String obs
+    Store store
 
     static constraints = {
     	obs nullable: true

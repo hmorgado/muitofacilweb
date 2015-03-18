@@ -7,10 +7,20 @@
 
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
-<head>
-  <title></title>
-</head>
-<body>
+    <head>
+        <meta name="layout" content="main"/>
+        <title>Form</title>
+    </head>
+    <body>
+        <g:form controller="login" action="login">
+            <label>Usuario: </label>
+            <g:textField name="login"/><br/>
 
-</body>
+            <label>Senha: </label>
+            <g:textField name="password"/><br/>
+
+            <g:actionSubmit value="Log in"/>
+        </g:form>
+    </body>
 </html>
+

@@ -1,5 +1,6 @@
 import muitofacilweb.CheckoutOrder
 import muitofacilweb.Customer
+import muitofacilweb.LoginController
 import muitofacilweb.Product
 
 class UrlMappings {
