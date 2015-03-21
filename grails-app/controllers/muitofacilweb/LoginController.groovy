@@ -6,20 +6,28 @@ import javax.servlet.http.Cookie
 class LoginController {
 
     def loginService
-    def cookieService
-
     def login = {
-
-        def map = loginService.filterRequest(params, request)
+        def map = loginService.filterRequest(params)
 
         if (map.isOkToProceed) {
-            def sellerAndToken = "${map.loggedSeller.sellerName}#${map.loggedSeller.token}"
-            println "seller and token: " + sellerAndToken
-            Cookie cookie = new Cookie('seller', sellerAndToken)
-            cookie.path = '/'
-            cookie.maxAge = 60 * 60 * 24 * 3
-            response.addCookie(cookie)
+            def sellerAndToken = generateToken(map)
+            response.addCookie(createCookie(sellerAndToken))
             redirect(controller: 'customer', action: 'create')
+        } else {
+            flash.message = "Usuario ou senha incorretos"
+            redirect(uri: '/')
         }
+    }
+
+    private generateToken(map){
+        "${map.loggedSeller.sellerName}#${map.loggedSeller.token}"
+    }
+
+    private createCookie(sellerAndToken){
+        Cookie cookie = new Cookie('seller', sellerAndToken)
+        cookie.path = '/'
+        cookie.maxAge = 60 * 60 * 24 * 3
+
+        cookie
     }
 }

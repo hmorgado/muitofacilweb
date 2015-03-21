@@ -17,8 +17,9 @@
             <g:textField name="login"/><br/>
 
             <label>Senha: </label>
-            <g:textField name="password"/><br/>
+            <g:passwordField name="password"/><br/>
 
+            ${flash.message} <br>
             <g:actionSubmit value="Log in"/>
         </g:form>
     </body>
