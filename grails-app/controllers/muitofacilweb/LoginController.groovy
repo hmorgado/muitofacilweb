@@ -11,7 +11,7 @@ class LoginController {
 
         if (map.isOkToProceed) {
             def sellerAndToken = generateToken(map)
-            response.addCookie(createCookie(sellerAndToken))
+            response.addCookie(createCookie('seller', sellerAndToken))
             redirect(controller: 'customer', action: 'create')
         } else {
             flash.message = "Usuario ou senha incorretos"
@@ -19,14 +19,19 @@ class LoginController {
         }
     }
 
+    def logout = {
+        response.addCookie(createCookie('seller', '', 0))
+        redirect(uri: '/')
+    }
+
     private generateToken(map){
         "${map.loggedSeller.sellerName}#${map.loggedSeller.token}"
     }
 
-    private createCookie(sellerAndToken){
-        Cookie cookie = new Cookie('seller', sellerAndToken)
+    private createCookie(name, value, maxAge = 60 * 60 * 24 * 3){
+        Cookie cookie = new Cookie(name, value)
         cookie.path = '/'
-        cookie.maxAge = 60 * 60 * 24 * 3
+        cookie.maxAge = maxAge
 
         cookie
     }

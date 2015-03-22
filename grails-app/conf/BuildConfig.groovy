@@ -15,8 +15,7 @@ grails.project.fork = [
     // configure settings for the run-app JVM
     run: [maxMemory: 768, minMemory: 64, debug: false, maxPerm: 256, forkReserve:false],
 //    run: false,
-
-//    test: false,
+//   test: false,
     // configure settings for the run-war JVM
     war: [maxMemory: 768, minMemory: 64, debug: false, maxPerm: 256, forkReserve:false],
     // configure settings for the Console UI JVM
@@ -69,11 +68,11 @@ grails.project.dependency.resolution = {
         runtime ":database-migration:1.4.0"
         runtime ":jquery:1.11.1"
 
-        compile ":authentication:2.0.1"
+//        compile ":authentication:2.0.1"
         
         compile ":filterpane:2.4.7"
 
-        compile ':cookie:1.4'
+//        compile ':cookie:1.4'
 
         // Uncomment these to enable additional asset-pipeline capabilities
         //compile ":sass-asset-pipeline:1.9.0"
