@@ -8,5 +8,6 @@ class Seller {
     Store store
 
     static constraints = {
+//        password password: true
     }
 }

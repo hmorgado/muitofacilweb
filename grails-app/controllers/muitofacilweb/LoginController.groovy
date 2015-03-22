@@ -10,6 +10,7 @@ class LoginController {
         def map = loginService.filterRequest(params)
 
         if (map.isOkToProceed) {
+            println "map.isOkToProceed: " + map.isOkToProceed
             def sellerAndToken = generateToken(map)
             response.addCookie(createCookie('seller', sellerAndToken))
             redirect(controller: 'customer', action: 'create')

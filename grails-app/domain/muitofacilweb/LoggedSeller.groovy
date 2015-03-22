@@ -7,4 +7,6 @@ class LoggedSeller {
 
     String sellerName
     String token
+    Store store
+
 }

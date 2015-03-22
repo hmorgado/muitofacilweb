@@ -5,7 +5,6 @@ class CheckoutOrder {
 	Customer customer
     String obs
 
-
 	static hasMany = [
         items: Item
 	]
